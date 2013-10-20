@@ -1,0 +1,17 @@
+language: go
+go:
+- 1.1
+- tip
+matrix:
+  allow_failures:
+  - go: tip
+env:
+  global:
+    secure: LahL2OWR6getxhsjB64v5ZGarmB5O+dub8ygBPEwSW8QbNWwjhghCY+P1OawHlTn/Q5ryWwvHIhCPWuWTJS65THwj6Z2Kx2R0tddQg/q2DcP2BP31Pxm7BIQSI5vfrWUVigporV/894mm0EQNIL9mj+lAfuRkS15P4CCO53/Ui4=
+install:
+- cd $TRAVIS_BUILD_DIR
+- go get -d -v ./...
+- go test -i ./...
+- go get github.com/axw/gocov/gocov
+- go get github.com/mattn/goveralls
+script: ./.travis.sh
